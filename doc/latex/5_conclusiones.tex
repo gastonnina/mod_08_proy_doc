@@ -1,0 +1,52 @@
+\newpage
+\thispagestyle{empty}
+\vspace*{0.35\textheight}
+\begin{center}
+	{\Huge\textbf{CAPÍTULO IV}} \\[0.5cm]
+	{\Huge\textbf{CONCLUSIONES Y}}\\[0.5cm]
+    {\Huge\textbf{RECOMENDACIONES}}
+\end{center}
+
+\newpage
+\chapter{CONCLUSIONES Y RECOMENDACIONES}
+
+\section{Conclusiones}
+
+El presente trabajo demostró la viabilidad de utilizar técnicas de Procesamiento de Lenguaje Natural (PLN) y algoritmos de clasificación supervisada para predecir el éxito comercial de una canción en función de su letra. A través del modelo base propuesto, se logró construir un pipeline robusto que abarca desde la recolección y limpieza de datos hasta la evaluación comparativa de distintos clasificadores.
+
+El modelo entrenado con vectorización TF-IDF y validación cruzada sobre un conjunto balanceado mostró que algoritmos como \textit{Random Forest}, \textit{XGBoost} y \textit{SVM} obtienen resultados competitivos, alcanzando métricas F1 superiores al 80\%. En particular, el modelo \textit{Random Forest} obtuvo un \textbf{F1-score promedio de 0.8010} en validación cruzada, posicionándose como la mejor alternativa para esta tarea.
+
+La limpieza textual y la lematización contribuyeron significativamente a mejorar el rendimiento, evidenciando la importancia del preprocesamiento en tareas de PLN. Además, el análisis cualitativo mediante nubes de palabras permitió identificar patrones lingüísticos diferenciadores entre canciones premiadas y no premiadas, aportando una perspectiva complementaria al análisis cuantitativo.
+
+\section{Limitaciones del estudio}
+
+Aunque los resultados obtenidos son prometedores, es importante reconocer ciertas limitaciones del estudio:
+
+\begin{itemize}
+    \item \textbf{Enfoque exclusivo en las letras:} si bien el objetivo principal de este estudio fue evaluar el contenido lingüístico de las canciones, los experimentos realizados muestran que incluir metadatos simples como el \texttt{year} puede mejorar ligeramente el rendimiento del modelo. Sin embargo, esto no contradice el enfoque original, sino que sugiere que futuros modelos podrían beneficiarse de una integración controlada de variables contextuales sin desplazar el análisis centrado en el lenguaje.
+    \item \textbf{Representatividad de los datos:} la base de datos se conforma mayoritariamente a partir de canciones listadas en el sitio Genius y premiadas por la RIAA, lo que podría no reflejar completamente otras formas de éxito comercial o cultural.
+    \item \textbf{Subjetividad en los premios:} la clasificación binaria “premiada” vs. “no premiada” depende de criterios externos definidos por la RIAA, que pueden no ser universales ni libres de sesgos.
+    \item \textbf{Preprocesamiento textual simplificado:} si bien se aplicó limpieza y lematización, no se incorporaron análisis sintácticos más profundos o el tratamiento de ambigüedades semánticas complejas.
+    \item \textbf{Uso de un dataset balanceado artificialmente:} la técnica de \textit{undersampling} permitió equilibrar clases, pero reduce la cantidad total de datos utilizados para el entrenamiento, lo que puede limitar la capacidad generalizadora del modelo.
+    \item \textbf{Patrones lingüísticos de nivel léxico:} si bien se lograron identificar patrones lingüísticos diferenciadores entre canciones premiadas y no premiadas, estos se limitaron a aspectos léxicos capturados mediante la técnica de \textit{TF-IDF}. No se abordaron estructuras sintácticas, relaciones semánticas profundas ni el uso de metáforas o simbolismos estilísticos que podrían influir en la recepción emocional de una obra. Para alcanzar un análisis más integral del lenguaje lírico, sería necesario incorporar representaciones lingüísticas más avanzadas, como embeddings contextuales.
+\end{itemize}
+
+\section{Recomendaciones}
+
+\subsection{Posibles mejoras al modelo}
+
+\begin{itemize}
+    \item \textbf{Incorporar embeddings contextuales:} modelos como \texttt{BERT}~o~\texttt{BETO} podrían capturar mejor las relaciones semánticas profundas del lenguaje en español.
+    \item \textbf{Ampliar las fuentes de validación:} considerar otros indicadores de éxito como reproducciones en plataformas de streaming o nominaciones a premios adicionales como los Grammy Latinos.
+    \item \textbf{Explorar modelos secuenciales:} redes neuronales recurrentes (RNN) o modelos basados en Transformers podrían captar mejor la estructura lírica de las canciones.
+    \item \textbf{Optimización de hiperparámetros:} aplicar técnicas como \textit{Grid Search} o \textit{Bayesian Optimization} para mejorar aún más el desempeño de los clasificadores.
+\end{itemize}
+
+\subsection{Líneas de trabajo futuro}
+
+\begin{itemize}
+    \item \textbf{Análisis sentimental y temático:} incorporar técnicas de análisis de sentimientos o modelado de tópicos para enriquecer la representación de las letras.
+    \item \textbf{Detección de plagio o repetitividad:} explorar métricas de originalidad como un predictor potencial del éxito musical.
+    \item \textbf{Aplicación en tiempo real:} adaptar el modelo para analizar nuevas canciones al momento de su lanzamiento, como una herramienta de predicción en la industria musical.
+    \item \textbf{Comparación interlingüística:} extender el estudio a canciones en otros idiomas y analizar similitudes o diferencias en patrones de éxito.
+\end{itemize}

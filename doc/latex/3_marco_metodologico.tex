@@ -1,0 +1,231 @@
+\newpage
+\thispagestyle{empty}
+\vspace*{0.35\textheight}
+\begin{center}
+	{\Huge\textbf{CAPÍTULO III}} \\[0.5cm]
+	{\Huge\textbf{MARCO METODOLÓGICO}}
+\end{center}
+
+\newpage
+\chapter{MARCO METODOLÓGICO}
+
+\section{Tipo de Investigación}
+
+La presente investigación es de tipo \textbf{aplicada y cuantitativa}. Se considera \textbf{aplicada} porque busca resolver un problema específico mediante la implementación de un modelo computacional. Es \textbf{cuantitativa} porque se basa en la medición numérica de características lingüísticas de letras de canciones y en el cálculo de métricas estadísticas para validar el desempeño del modelo.
+
+Asimismo, se enmarca en un diseño \textbf{no experimental, transversal y explicativo}. Es \textbf{no experimental} al no manipular variables sino analizar datos ya existentes; \textbf{transversal} (corte único temporal) al procesar el corpus completo de 1990--2022 en un solo análisis —a diferencia de un diseño \textbf{longitudinal}, que implicaría múltiples mediciones a lo largo del tiempo para observar cambios en las mismas instancias—; y \textbf{explicativo} porque busca identificar relaciones causales entre variables lingüísticas (p. ej., uso de n-gramas o términos afectivos) y el éxito musical medido por premiaciones.
+
+\section{Diseño Metodológico}
+
+El estudio adopta el ciclo \textbf{CRISP-DM} (Cross-Industry Standard Process for Data Mining) por su carácter iterativo y flexible en proyectos de minería de datos. Las fases implementadas fueron:
+
+\begin{itemize}
+  \item \textbf{Comprensión del problema y de los datos:} Definición de variables, revisión documental y recolección de letras y metadatos de premiación.
+  \item \textbf{Preparación de datos:} Limpieza textual (remoción de ruido, stopwords), tokenización, lematización y vectorización con TF-IDF para cuantificar características léxicas y semánticas.
+  \item \textbf{Modelado:} Entrenamiento de algoritmos supervisados (Naive Bayes, Regresión Logística, SVM, Random Forest, XGBoost) con validación cruzada estratificada, lo que garantiza la representatividad de cada clase en los pliegues.
+  \item \textbf{Evaluación:} Medición de desempeño a través de métricas estadísticas (accuracy, precision, recall, F1-score) y análisis de matrices de confusión para determinar errores de clasificación.
+  \item \textbf{Despliegue parcial:} Generación de visualizaciones (curvas ROC, nubes de palabras) y discusión de resultados para extraer conclusiones prácticas.
+\end{itemize}
+
+Se eligió CRISP-DM por permitir iterar entre fases de preparación y modelado tras cada ronda de evaluación, optimizando así la calidad del modelo y reduciendo el sesgo.
+
+\section{Técnicas e Instrumentos de Recolección de Datos}
+
+Los datos fueron recolectados a partir de fuentes documentales digitales. Las letras de canciones fueron obtenidas mediante scraping desde el sitio \textit{Genius.com}, mientras que la información sobre premiación fue extraída del repositorio oficial de la \textbf{Recording Industry Association of America (RIAA)}. La selección se centró en canciones en español del periodo 1990--2022.
+
+Se diseñó un dataset balanceado artificialmente a través de \textbf{undersampling} para evitar el sesgo por clase (premiada vs no premiada).
+
+\section{Población y Muestra}
+
+\subsection{Población}
+
+La población de estudio está compuesta por letras de canciones en idioma español publicadas entre los años 1990 y 2022. Esta población incluye tanto obras musicales que han recibido algún tipo de reconocimiento oficial, como aquellas que no han sido premiadas, pero que cuentan con presencia pública en plataformas digitales.
+
+Se considera que las letras reflejan una dimensión lingüística clave del producto musical y pueden contener patrones asociados al éxito o impacto cultural. La población está implícitamente delimitada por la accesibilidad pública de las letras en bases como \textit{Genius.com}, y por la disponibilidad de información sobre premiación otorgada por la \textit{Recording Industry Association of America (RIAA)}.
+
+\subsection{Muestra}
+
+La muestra fue compuesta por un total de aproximadamente \textbf{5.678 canciones en español}, organizadas en dos clases:
+
+\begin{itemize}
+    \item \textbf{Premiadas:} canciones en español que figuran en los registros públicos de la RIAA y han sido reconocidas con discos de Oro, Platino o Multiplatino.
+    \item \textbf{No premiadas:} canciones en español sin registro de premiación en la RIAA, seleccionadas de forma equilibrada desde fuentes abiertas.
+\end{itemize}
+
+\subsection{Criterios de selección}
+
+Para asegurar la relevancia y comparabilidad entre canciones, se aplicaron los siguientes criterios:
+
+\begin{itemize}
+    \item Canciones en idioma español (total o mayoritariamente).
+    \item Publicadas entre 1990 y 2022.
+    \item Letras disponibles de forma pública y en formato textual procesable.
+    \item Exclusión de remixes, versiones instrumentales o duplicadas.
+\end{itemize}
+
+\subsection{Estrategia de muestreo}
+
+Se empleó un muestreo \textbf{no probabilístico por conveniencia}, dado que se seleccionaron canciones a partir de su disponibilidad en plataformas específicas. No obstante, se implementaron acciones para asegurar \textbf{balance y diversidad}:
+
+\begin{itemize}
+    \item Igual número de canciones premiadas y no premiadas para evitar sesgo por clase.
+    \item Inclusión de distintos géneros musicales (pop, reguetón, rock, balada, etc.).
+    \item Distribución temporal amplia (años 90, 2000s, 2010s y 2020s).
+\end{itemize}
+
+Esta estrategia buscó garantizar la representatividad del fenómeno musical en español durante el periodo analizado, sin comprometer la calidad del análisis computacional posterior.
+\section{Técnicas de Análisis de Datos}
+
+Se aplicaron las siguientes técnicas:
+
+\begin{itemize}
+    \item \textbf{Procesamiento de Lenguaje Natural (PLN):} limpieza, lematización y vectorización con TF-IDF.
+    \item \textbf{Aprendizaje supervisado:} uso de algoritmos de clasificación binaria.
+    \item \textbf{Evaluación estadística:} cálculo de métricas de desempeño del modelo (accuracy, precision, recall, F1-score) y matrices de confusión.
+    \item \textbf{Visualización:} nubes de palabras, gráficos de boxplot, curvas ROC.
+\end{itemize}
+
+\section{Identificación de Variables}
+
+En la presente investigación se han identificado las siguientes variables clave, según su función dentro del diseño metodológico:
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\begin{table}[H]
+\centering
+\caption{Identificación de Variables}
+\begin{tabularx}{\textwidth}{|Y|Y|Y|Y|}
+\hline
+\textbf{Nombre de la variable} & \textbf{Tipo} & \textbf{Descripción} & \textbf{Escala de medición} \\
+\hline
+\textbf{Contenido lingüístico de las letras} & Independiente & Características léxicas y semánticas de las letras de canciones en español. & Ordinal (frecuencia, puntuaciones TF-IDF) \\
+\hline
+\textbf{Éxito musical (premiación)} & Dependiente & Condición de reconocimiento oficial otorgado por la RIAA a las canciones. & Nominal dicotómica (Premiada = 1, No premiada = 0) \\
+\hline
+\textbf{Desempeño del modelo clasificatorio} & Auxiliar & Capacidad del modelo para predecir correctamente si una canción es premiada o no. & De razón (porcentaje de F1-score, accuracy) \\
+\hline
+\end{tabularx}
+\label{tab:identificacion_variables}
+\end{table}
+
+\section{Operacionalización de Variables}
+
+La siguiente tabla resume las variables principales consideradas en la presente investigación, su tipo, dimensiones e indicadores, así como los instrumentos utilizados para su medición y análisis.
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\begin{table}[H]
+\centering
+\caption{Tabla de Operacionalización de Variables}
+\begin{tabularx}{\textwidth}{|Y|Y|Y|Y|Y|}
+\hline
+\textbf{Variable} & \textbf{Definición conceptual} & \textbf{Dimensiones} & \textbf{Indicadores} & \textbf{Instrumento} \\
+\hline
+\textbf{Contenido lingüístico de las letras (Independiente)} & Conjunto de elementos léxicos y semánticos presentes en letras de canciones en español. & Nivel léxico & Frecuencia de palabras, n-gramas, diversidad léxica & Script de procesamiento (Python + spaCy) \\
+\cline{3-5}
+& & Nivel semántico & Palabras afectivas, temas líricos, lematización & Modelo semántico, Wordcloud \\
+\hline
+\textbf{Éxito musical (premiación) (Dependiente)} & Reconocimiento institucional otorgado por la RIAA. & Clase de premiación & Premiación (1/0), tipo de premio & Base de datos RIAA \\
+\hline
+\textbf{Desempeño del modelo (Auxiliar)} & Nivel de acierto del modelo de clasificación supervisada. & Precisión predictiva & F1-score, accuracy, matriz de confusión & Scikit-learn, validación cruzada \\
+\hline
+\end{tabularx}
+\label{tab:operacionalizacion}
+\end{table}
+
+
+\section{Tabla de Consistencia}
+
+A continuación se presenta la matriz de consistencia metodológica que vincula los componentes fundamentales del estudio:
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{02_matriz_consistencia.png}
+  \caption{Matriz de consistencia}
+  \label{fig:matriz_consistencia}
+\end{figure}
+
+\section{Etapas del Estudio}
+
+\begin{enumerate}
+    \item Revisión documental del problema y casos similares.
+    \item Recolección y depuración de datos textuales.
+    \item Preprocesamiento con herramientas de PLN.
+    \item Entrenamiento y validación cruzada de modelos supervisados.
+    \item Análisis comparativo de métricas.
+    \item Interpretación de resultados y discusión.
+\end{enumerate}
+
+\section{Cronograma}
+
+En la tabla~\ref{tab:cronograma} se describen las fases del proyecto según CRISP-DM, junto con las actividades clave y sus fechas de inicio y fin. El cronograma abarca un año, desde julio de 2025 hasta junio de 2026.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Cronograma de actividades y fases CRISP-DM}
+  \label{tab:cronograma}
+  \begin{tabular}{@{}p{7cm}cc@{}}
+    \toprule
+    \textbf{Actividad}                           & \textbf{Inicio}      & \textbf{Fin}         \\
+    \midrule
+    \multicolumn{3}{@{}l}{\textbf{Fases CRISP-DM}} \\[0.2em]
+    Comprensión del negocio                      & Julio 2025           & Agosto 2025          \\
+    Comprensión de datos                         & Septiembre 2025      & Octubre 2025         \\
+    Preparación de datos                         & Noviembre 2025       & Diciembre 2025       \\
+    Modelado                                     & Enero 2026           & Febrero 2026         \\
+    Evaluación                                   & Marzo 2026           & Abril 2026           \\
+    Despliegue                                   & Mayo 2026            & Junio 2026           \\
+    \addlinespace
+    \multicolumn{3}{@{}l}{\textbf{Otras actividades}} \\[0.2em]
+    Revisión bibliográfica                       & Julio 2025           & Agosto 2025          \\
+    Diseño de instrumentos                       & Septiembre 2025      & Octubre 2025         \\
+    Trabajo de campo / recolección de datos      & Noviembre 2025       & Diciembre 2025       \\
+    Análisis de datos                            & Enero 2026           & Febrero 2026         \\
+    Redacción de resultados                      & Marzo 2026           & Abril 2026           \\
+    Revisión y corrección final                  & Mayo 2026            & Junio 2026           \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+\section{Presupuesto}
+
+\subsection{Recursos informáticos}
+
+Para el desarrollo del proyecto se requerirá un entorno local basado en Ubuntu 24.04, sin necesidad de GPU, aprovechando hardware de gama media. El equipamiento previsto es el siguiente:
+
+\begin{table}[H]
+  \centering
+  \caption{Características de hardware y software}
+  \label{tab:recursos_informaticos}
+  \begin{tabular}{|p{8cm}|p{8cm}|}
+    \hline
+    \textbf{Hardware}                         & \textbf{Software}               \\
+    \hline
+    Procesador: Intel Core i7-4700MQ          & Sistema operativo: Ubuntu 24.04 \\
+    Memoria RAM: 16 GB                        & Python: v3.12.3                 \\
+    Almacenamiento: 1 TB SSD (800 GB libre)   & Entorno virtual: Sí             \\
+    Tarjeta madre: HP Envy 1968               & Jupyter Notebook: v8.1.0        \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsection{Presupuesto estimado}
+
+Dado que todo el software empleado será de código abierto y no requerirá licencias, el presupuesto se centrará en honorarios de expertos para la validación de resultados y en el equipo de cómputo en caso de no tenerse:
+
+\begin{table}[H]
+  \centering
+  \caption{Presupuesto estimado}
+  \label{tab:presupuesto_estimated}
+  \begin{tabular}{|p{12cm}|r|}
+    \hline
+    \textbf{Concepto}                                                    & \textbf{Costo (Bs)} \\
+    \hline
+    Honorarios para expertos (encuesta de validación)                    & 1\,000              \\
+    \hline
+    Equipo de cómputo (Intel i7, 16 GB RAM, SSD o laptop equivalente)     & 8\,000              \\
+    \hline
+    \textbf{Total}                                                       & \textbf{9\,000}     \\
+    \hline
+  \end{tabular}
+\end{table}
