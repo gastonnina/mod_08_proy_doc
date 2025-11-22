@@ -28,35 +28,31 @@ Finalmente, este informe se estructura de la siguiente manera: en el Capítulo 2
 
 \chapter{MARCO INTRODUCTORIO}
 
-\section{Antecedentes}
-
-AAAAA
-
 \section{Planteamiento del Problema y Pregunta de Investigación}
 \subsection{Contextualización del Problema}
-El uso de herramientas basadas en Inteligencia Artificial (IA) se ha expandido de manera
-acelerada en el ámbito del desarrollo de software. Sin embargo, los niveles de adopción
-varían sustancialmente entre diferentes perfiles profesionales, regiones, industrias y niveles
-educativos. Esto plantea la necesidad de identificar los factores que explican esta variabilidad
-y permiten anticipar patrones de adopción tecnológica.
+El uso de herramientas basadas en Inteligencia Artificial (IA) se ha expandido de manera acelerada en el ámbito del desarrollo de software. Sin embargo, los niveles de adopción varían sustancialmente entre diferentes perfiles profesionales, regiones, industrias y niveles educativos. Esto plantea la necesidad de identificar los factores que explican esta variabilidad y permiten anticipar patrones de adopción tecnológica.
 
-El dataset público \textit{Stack Overflow Annual Developer Survey 2025} ofrece información
-estructurada sobre miles de desarrolladores a nivel global, permitiendo abordar este
-problema desde un enfoque cuantitativo y predictivo.
+El dataset público \textit{Stack Overflow Annual Developer Survey 2025} ofrece información estructurada sobre miles de desarrolladores a nivel global, permitiendo abordar este problema desde un enfoque cuantitativo y predictivo.
 
 \subsection{Problema de Investigación}
-A pesar de la disponibilidad de datos, no se conoce con claridad qué características del perfil
-de un desarrollador influyen más en la probabilidad de que utilice o no herramientas de IA.
-Tampoco se ha establecido un modelo sistemático que permita predecir este comportamiento
-y evaluar su desempeño mediante métricas apropiadas.
+A pesar de la disponibilidad de datos, no se conoce con claridad qué características del perfil de un desarrollador influyen más en la probabilidad de que utilice o no herramientas de IA. Tampoco se ha establecido un modelo sistemático que permita predecir este comportamiento y evaluar su desempeño mediante métricas apropiadas.
 
 \subsection{Pregunta de Investigación Principal}
+
+La pregunta central que guía el presente estudio es la siguiente:
+
 \begin{quote}
-\textbf{¿Es posible predecir si un desarrollador utiliza herramientas de IA a partir de su perfil
-profesional, educativo, geográfico y tecnológico?}
+\textbf{¿Podemos predecir la adopción de IA en desarrolladores utilizando su perfil profesional y tecnológico en 2025?}
 \end{quote}
 
+Esta formulación permite estructurar el análisis en torno a una variable objetivo claramente definida (\textit{AI\_Usage}) y a un conjunto de variables predictoras que combinan atributos categóricos y numéricos relevantes para el comportamiento tecnológico.
+
 \subsection{Tipo de Pregunta Analítica}
+
+De acuerdo con la naturaleza de la variable objetivo (\textit{usa IA} = Sí/No), el estudio se enmarca en una \textbf{pregunta analítica de tipo predictivo}. Esto implica que el propósito no es explicar causalmente por qué se adopta la IA, sino construir un modelo capaz de estimar la probabilidad de adopción utilizando patrones aprendidos a partir de los datos disponibles.
+
+El problema se aborda mediante técnicas de \textbf{clasificación supervisada}, ya que el dataset incluye etiquetas reales que permiten entrenar modelos predictivos bajo un esquema de aprendizaje supervisado.
+
 La pregunta planteada corresponde a un análisis de tipo:
 
 \begin{itemize}
@@ -69,179 +65,25 @@ La pregunta planteada corresponde a un análisis de tipo:
 La elección de un enfoque supervisado de clasificación se justifica por las siguientes razones:
 
 \begin{enumerate}
-    \item El dataset contiene una \textbf{variable objetivo claramente definida} relacionada con el
-    uso de herramientas de IA.
-    \item La naturaleza de la variable objetivo (binaria) permite la aplicación de modelos como
-    regresión logística y Random Forest.
-    \item Existe interés práctico en \textbf{predecir la probabilidad de adopción} como apoyo a
-    decisiones de formación, estrategias de talento y políticas internas en organizaciones
-    tecnológicas.
-    \item Las características de los desarrolladores (rol, país, industria, experiencia, educación)
-    pueden representar factores relevantes y medibles para la predicción.
+    \item El dataset contiene una \textbf{variable objetivo claramente definida} relacionada con el uso de herramientas de IA.
+    \item La naturaleza de la variable objetivo (binaria) permite la aplicación de modelos como regresión logística y Random Forest.
+    \item Existe interés práctico en \textbf{predecir la probabilidad de adopción} como apoyo a decisiones de formación, estrategias de talento y políticas internas en organizaciones tecnológicas.
+    \item Las características de los desarrolladores (rol, país, industria, experiencia, educación) pueden representar factores relevantes y medibles para la predicción.
 \end{enumerate}
 
-\subsection{Objetivo Analítico}
-\begin{quote}
-\textbf{Desarrollar y evaluar un modelo supervisado de clasificación capaz de predecir la
-probabilidad de uso de herramientas de IA por parte de desarrolladores, empleando métricas
-de desempeño como F1-score y validación cruzada estratificada.}
-\end{quote}
+\subsection{Objetivo}
 
-\section{Delimitación}
-AAAA
-
-\section{Problemas específicos}
-
-A partir de esta pregunta principal, se derivan los siguientes problemas específicos:
-
-\begin{itemize}
-    \item ¿Cómo se puede construir un corpus representativo y balanceado de letras premiadas y no premiadas?
-    \item ¿Qué técnicas de procesamiento de lenguaje natural son más adecuadas para representar lingüísticamente las letras?
-    \item ¿Qué algoritmos supervisados presentan mejor rendimiento en la clasificación de canciones según su premiación?
-    \item ¿Cuáles son los rasgos lingüísticos más discriminativos entre las canciones premiadas y no premiadas?
-    \item ¿Cómo representar visualmente los patrones lingüísticos identificados por los modelos?
-\end{itemize}
-
-\section{Objetivos de la investigación}
-    \subsection{Objetivo general}
-
-    \noindent
-    Desarrollar un modelo de clasificación supervisado basado en técnicas de Procesamiento de Lenguaje Natural y algoritmos de machine learning que permita identificar y analizar patrones lingüísticos diferenciadores en letras de canciones en español premiadas y no premiadas por la Recording Industry Association of America (RIAA) en el periodo 1990-2022, evaluando su desempeño mediante precisión, \textit{recall} y \textit{F1‐score}.
-
-    \subsection{Objetivos específicos}
-
-    \begin{itemize}
-        \item Recolectar un corpus balanceado de letras de canciones en español premiadas y no premiadas por la RIAA (1990–2022).
-        \item Preprocesar el texto mediante limpieza, normalización, eliminación de \emph{stopwords}, lematización y extracción de n-gramas, y vectorizar con TF-IDF.
-        \item Entrenar modelos supervisados (Naive Bayes, Regresión Logística, SVM, Random Forest y XGBoost) para clasificar las letras.
-        \item Evaluar el desempeño de los modelos utilizando precisión, \textit{recall} y \textit{F1‐score}.
-        \item Visualizar los patrones lingüísticos detectados mediante representaciones gráficas e informes interpretables.
-    \end{itemize}
+Predecir la probabilidad de que un encuestado utilice herramientas de inteligencia artificial (\textit{AI Usage}: Sí/No) en función de sus características técnicas y demográficas.
 
 \section{Hipótesis}
 
-\noindent
-\textbf{Hipótesis principal:} \textit{Existen patrones lingüísticos diferenciables entre las letras de canciones en español que han sido premiadas por la RIAA y aquellas que no lo han sido, los cuales pueden ser identificados mediante un modelo de clasificación supervisado con un nivel de precisión estadísticamente significativo.}
+Un modelo predictivo permite identificar la tendencia de uso de IA en el desarrollo de software
 
-\subsection{Hipótesis específicas}
+\section{Criterio de Éxito}
 
-A partir del objetivo general y de los cinco objetivos específicos, se plantean las siguientes hipótesis:
+El proyecto se considera exitoso si el modelo predictivo cumple con el siguiente criterio:
 
-\begin{enumerate}
-  \item \textbf{Corpus balanceado.}  
-  El corpus recolectado presentará una proporción 1:1 de canciones premiadas y no premiadas por la RIAA, manteniendo una distribución representativa de géneros musicales y periodos temporales (1990–2022).
-
-  \item \textbf{Preprocesamiento y vectorización.}  
-  El uso combinado de limpieza textual, normalización, eliminación de stopwords, lematización y extracción de n-gramas generará vectores TF-IDF con mayor capacidad discriminativa (medida en varianza explicada en un análisis de componentes principales) que una simple vectorización unigram.
-
-  \item \textbf{Comparación de modelos.}  
-  El modelo XGBoost alcanzará un F1-score significativamente superior (p < 0.05) al de Naive Bayes en el conjunto de prueba, demostrando la ventaja del boosting en datos textuales con desequilibrio de clases.
-
-  \item \textbf{Patrones lingüísticos.}  
-  Las variables afectivas (palabras con carga emocional) y los n-gramas de orden dos y tres serán los indicadores más influyentes para distinguir letras premiadas de no premiadas, según la importancia de características extraída de Random Forest y Regresión Logística.
-
-  \item \textbf{Visualización de resultados.}  
-  Las nubes de palabras y los mapas de calor mostrarán agrupaciones temáticas claramente diferenciadas entre canciones premiadas y no premiadas, facilitando la interpretación de los patrones lingüísticos identificados.
-\end{enumerate}
-
-\section{Justificación}
-
-\subsection{Justificación teórica}
-
-Desde una perspectiva teórica, este estudio se fundamenta en los avances del Procesamiento del Lenguaje Natural (PLN) y de la clasificación supervisada como herramientas clave para el análisis de datos textuales \parencite{Jurafsky2008,Manning2014}. En particular, las letras de canciones pueden entenderse como documentos estructurados que, transformados en vectores mediante TF-IDF, revelan patrones lingüísticos significativos \parencite{Ramos2003}.
-
-\subsection{Justificación práctica y social}
-
-Esta investigación aporta un modelo capaz de clasificar el éxito de una canción basándose en su contenido lírico, lo cual resulta de gran utilidad para compositores, productores y plataformas de distribución musical que buscan comprender qué rasgos lingüísticos influyen en la recepción de una obra. Asimismo, el arte y la música desempeñan un rol central en la identidad cultural y emocional de la sociedad, y analizar el éxito desde una perspectiva lingüística facilita la comprensión de cómo el lenguaje en las letras conecta cognitivamente con los oyentes, influye en su percepción y refuerza los vínculos culturales. La metodología propuesta, que abarca desde la recolección y el preprocesamiento del texto hasta la aplicación de modelos supervisados y la interpretación de resultados, es replicable y puede adaptarse a otros idiomas o contextos culturales, lo que democratiza el uso de sistemas de recomendación y herramientas de análisis automatizado en la industria musical y en las ciencias sociales.
-
-\subsection{Justificación metodológica}
-
-La presente investigación adopta un enfoque mixto que combina técnicas de procesamiento de lenguaje natural (TF-IDF con n-gramas) con un ensamble de cinco algoritmos de clasificación (Naive Bayes, Regresión Logística, SVM, Random Forest y XGBoost), todo bajo el marco de la metodología CRISP-DM \parencite{Chapman2000}. Esta configuración permite no solo comparar la efectividad de cada modelo en la predicción del éxito musical a partir de un corpus mundial de letras, sino también integrar de forma sistemática las fases de comprensión de datos, modelado y evaluación, aportando una ruta reproducible y escalable para estudios de texto en español. Además, la operacionalización detallada de variables afectivas y lingüísticas introduce un nivel de granularidad poco explorado en estudios previos, lo que fortalece la robustez y aplicabilidad de los resultados.
-
-\section{Alcances y limitaciones}
-
-\subsection{Alcances}
-
-\begin{itemize}
-  \item Desarrollo de un modelo supervisado basado en vectorización TF-IDF para clasificar letras de canciones en español.
-  \item Evaluación de cinco algoritmos supervisados: Naive Bayes, Regresión Logística, SVM, Random Forest y XGBoost.
-  \item Análisis exclusivo del contenido textual de las canciones, sin considerar métricas de reproducción ni aspectos de producción.
-  \item Aplicación al periodo 1990–2022 y canciones premiadas por la RIAA con disponibilidad de letra.
-\end{itemize}
-
-\subsection{Limitaciones}
-
-\begin{itemize}
-  \item Análisis limitado a letras de canciones en español con información disponible sobre premiaciones.
-  \item Exclusión de letras traducidas y de composiciones instrumentales sin letra.
-  \item Dependencia de la calidad y cobertura del conjunto de datos recopilado.
-  \item Generalización potencialmente reducida: podría requerirse ajustar la metodología para otros géneros, idiomas o contextos culturales.
-\end{itemize}
-
-
-\section{Resultados esperados}
-
-Se espera contar con un corpus balanceado de letras de canciones en español, etiquetado según su premiación por la RIAA en el periodo 1990–2022, y con un proceso reproducible de preprocesamiento y vectorización TF-IDF aplicado al mismo. Asimismo, se prevé la implementación y entrenamiento de cinco modelos supervisados (Naive Bayes, Regresión Logística, SVM, Random Forest y XGBoost) para la clasificación de las letras, cuya comparación de desempeño se realizará mediante precisión, \textit{recall} y \textit{F1-score}, y que permitirá identificar el modelo con mejor rendimiento. A partir de los modelos entrenados, se extraerán los patrones lingüísticos más discriminativos, a través de la importancia de variables de cada algoritmo, y se presentarán en un conjunto de visualizaciones e informes interpretables (gráficos de importancia de variables, nubes de términos y mapas de calor) que respalden las conclusiones y recomendaciones de la tesis.
-
-\section{Matriz de Consistencia}
-
-A continuación se presenta la matriz de consistencia, en la que se vinculan de forma sistemática el problema de investigación, los objetivos, la hipótesis y las variables del estudio. Esta herramienta facilita la verificación de la coherencia interna de la tesis antes de avanzar con el desarrollo metodológico.
-
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-
-\begin{table}[H]
-\centering
-\caption{Matriz de Consistencia}
-\begin{tabularx}{\textwidth}{|Y|Y|Y|Y|}
-\hline
-\textbf{Problema} & \textbf{Objetivo} & \textbf{Hipótesis} & \textbf{Variables} \\
-\hline
-\textbf{General:} ¿Qué patrones lingüísticos diferencian las letras de canciones en español premiadas por la RIAA de aquellas que no han sido premiadas durante el período 1990--2022, y cómo pueden ser identificados mediante un modelo de clasificación supervisado?
-
-\vspace{0.3em}
-\textbf{Específicos:}
-\begin{enumerate}
-  \item ¿Cómo construir un corpus balanceado?
-  \item ¿Qué técnicas PLN son adecuadas?
-  \item ¿Qué modelos clasifican mejor?
-  \item ¿Qué características son más relevantes?
-  \item ¿Cómo representar visualmente los resultados?
-\end{enumerate}
-&
-
-\textbf{General:} Desarrollar un modelo de clasificación supervisado que permita identificar y analizar patrones lingüísticos característicos de las letras de canciones en español premiadas y no premiadas por la RIAA.
-
-\vspace{0.3em}
-\textbf{Específicos:}
-\begin{enumerate}
-  \item Recolectar un corpus balanceado
-  \item Preprocesar con técnicas de PLN
-  \item Entrenar y comparar modelos
-  \item Identificar características lingüísticas
-  \item Visualizar patrones relevantes
-\end{enumerate}
-&
-
-\textbf{General:} Existen patrones lingüísticos diferenciables entre letras premiadas y no premiadas que pueden ser detectados por un modelo con precisión significativa.
-
-\vspace{0.3em}
-\textbf{Específicas:}
-\begin{itemize}
-  \item El contenido lingüístico varía entre clases
-  \item Algunos modelos son más precisos
-  \item Las visualizaciones ayudan a interpretar resultados
-\end{itemize}
-&
-
-\textbf{Independiente:} Contenido lingüístico de las letras
-
-\vspace{0.3em}
-\textbf{Dependiente:} Éxito musical (premiación)
-
-\vspace{0.3em}
-\textbf{Auxiliares:} Desempeño del modelo, visualización e interpretabilidad
-\\
-\hline
-\end{tabularx}
-\label{tab:matriz_consistencia}
-\end{table}
+\begin{quote}
+\textbf{F1-score mayor o igual a 0.80 en el conjunto de prueba, utilizando validación cruzada
+con $k = 5$ para asegurar la estabilidad del desempeño.}
+\end{quote}
