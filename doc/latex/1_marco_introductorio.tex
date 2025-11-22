@@ -15,36 +15,80 @@
 	\Large \textbf{INTRODUCCIÓN}
 \end{center}
 
-En la era digital, el análisis de texto ha cobrado gran relevancia en diversos dominios, incluyendo el ámbito musical, donde las letras de canciones representan una fuente rica en información lingüística y cultural. Con el auge de las técnicas de Procesamiento del Lenguaje Natural (PLN) y aprendizaje automático, es posible explorar patrones en estos datos textuales de gran volumen, con el fin de descubrir tendencias, clasificar contenidos e incluso predecir el éxito de productos culturales como la música a escala mundial \parencite{Oancea2023,Hassan2022}.
+En los últimos años, la adopción de herramientas de Inteligencia Artificial (IA) en el  ámbito del desarrollo de software ha experimentado un crecimiento acelerado. La aparición de modelos generativos, asistentes de código y plataformas de automatización ha  transformado las dinámicas de trabajo de los desarrolladores, influyendo en productividad, competencias técnicas y procesos de toma de decisiones dentro de las organizaciones  tecnológicas.
 
-Numerosos estudios han demostrado que las letras de canciones pueden ser analizadas de forma efectiva mediante modelos supervisados, utilizando representaciones vectoriales como \textit{TF-IDF} para transformar el texto en una forma numérica adecuada para algoritmos de clasificación \parencite{Wardana2024}. Estos enfoques han sido aplicados, por ejemplo, para detectar contenido ofensivo en canciones \parencite{Bolla2024}, realizar análisis de sentimiento en distintos idiomas \parencite{Kumar2024}, y agrupar letras por temática, género o estado de ánimo mediante técnicas de agrupamiento basadas únicamente en el contenido textual \parencite{Parra2013}.
+El dataset \textit{Stack Overflow Annual Developer Survey 2025} constituye una de las  fuentes más completas y actuales sobre el perfil profesional, tecnológico y educativo de  desarrolladores a nivel global. Este conjunto de datos permite explorar de manera cuantitativa  los factores asociados a la adopción de herramientas de IA y genera un marco idóneo para  construir modelos predictivos basados en aprendizaje automático.
 
-Sin embargo, no existe aún un modelo computacional que identifique objetivamente los patrones lingüísticos que diferencian las letras de canciones en español premiadas por la Recording Industry Association of America (RIAA) de las no premiadas. Esta tesis propone desarrollar, sobre un corpus mundial de letras de canciones etiquetado (1990–2022) que garantiza delimitación temporal y cobertura global, y se desarrollará un modelo supervisado que incluya: limpieza y normalización del texto; vectorización \textit{TF-IDF} con n-gramas; y clasificación mediante algoritmos supervisados como Naive Bayes, Regresión Logística, Máquinas de Vectores de Soporte (SVM), Random Forest y XGBoost.
+El propósito general de este estudio es desarrollar un modelo supervisado capaz de  predecir si un encuestado utiliza herramientas de IA, empleando variables profesionales, educativas y tecnológicas. Para ello, se realiza un proceso analítico que incluye limpieza de  datos, análisis exploratorio, selección de técnicas, comparación de modelos y validación  cuantitativa utilizando métricas de desempeño como F1-score y curvas ROC.
 
-Para evaluar el desempeño del modelo, se emplearán métricas como precisión, \textit{recall} y \textit{F1-score}, con el objetivo de aportar evidencia empírica al estudio del éxito musical desde una perspectiva computacional y lingüística. Así, se abren nuevas posibilidades para la industria cultural y musical, así como para el diseño de sistemas de recomendación inteligentes que integren características estilísticas y lingüísticas de las letras de canciones.
+Metodológicamente, se aplican dos enfoques de clasificación ampliamente utilizados:  regresión logística y Random Forest. Ambos modelos se evalúan mediante validación cruzada  estratificada (k=5), considerando la naturaleza binaria de la variable objetivo y el leve  desbalance presente en el conjunto de datos. Asimismo, se analizan las ventajas, limitaciones  y estabilidad de cada modelo en función de su desempeño y su interpretabilidad.
+
+Finalmente, este informe se estructura de la siguiente manera: en el Capítulo 2 se presenta  el marco teórico relacionado con el modelamiento supervisado y las métricas utilizadas; en el  Capítulo 3 se describe el conjunto de datos y se desarrollan los análisis exploratorios; en el  Capítulo 4 se exponen los resultados del modelamiento y la comparación entre técnicas; y en  el Capítulo 5 se presentan las conclusiones, implicaciones prácticas y recomendaciones derivadas del estudio.
+
 
 \chapter{MARCO INTRODUCTORIO}
 
 \section{Antecedentes}
 
-El estudio de las letras de canciones ha evolucionado a partir de los fundamentos del Procesamiento del Lenguaje Natural establecidos por Jurafsky \& Martin \parencite{Jurafsky2008}, y actualmente existen repositorios como Genius y Letras.com que permiten recolectar grandes volúmenes de letras en español \parencite{GeniusAPI2022}, al mismo tiempo que la RIAA publica listados históricos de premiaciones que facilitan el análisis de la relación entre características textuales y reconocimiento institucional \parencite{RIAAstats2023}.
+AAAAA
 
+\section{Planteamiento del Problema y Pregunta de Investigación}
+\subsection{Contextualización del Problema}
+El uso de herramientas basadas en Inteligencia Artificial (IA) se ha expandido de manera
+acelerada en el ámbito del desarrollo de software. Sin embargo, los niveles de adopción
+varían sustancialmente entre diferentes perfiles profesionales, regiones, industrias y niveles
+educativos. Esto plantea la necesidad de identificar los factores que explican esta variabilidad
+y permiten anticipar patrones de adopción tecnológica.
 
+El dataset público \textit{Stack Overflow Annual Developer Survey 2025} ofrece información
+estructurada sobre miles de desarrolladores a nivel global, permitiendo abordar este
+problema desde un enfoque cuantitativo y predictivo.
 
-\section{Planteamiento del problema}
+\subsection{Problema de Investigación}
+A pesar de la disponibilidad de datos, no se conoce con claridad qué características del perfil
+de un desarrollador influyen más en la probabilidad de que utilice o no herramientas de IA.
+Tampoco se ha establecido un modelo sistemático que permita predecir este comportamiento
+y evaluar su desempeño mediante métricas apropiadas.
 
-La mayoría de los estudios sobre éxito musical se basan en indicadores cuantitativos ventas, reproducciones, rankings y en percepciones subjetivas tales como opiniones de críticos, redes sociales, dejando de lado el análisis sistemático del contenido textual de las letras \parencite{Hassan2022,Wardana2024}. En particular, no existe un modelo computacional que, de forma objetiva, identifique patrones lingüísticos en canciones en español premiadas por la RIAA frente a las no premiadas. Esta brecha limita el desarrollo de herramientas que integren características lingüísticas para comprender y predecir el reconocimiento institucional de obras musicales.
+\subsection{Pregunta de Investigación Principal}
+\begin{quote}
+\textbf{¿Es posible predecir si un desarrollador utiliza herramientas de IA a partir de su perfil
+profesional, educativo, geográfico y tecnológico?}
+\end{quote}
 
+\subsection{Tipo de Pregunta Analítica}
+La pregunta planteada corresponde a un análisis de tipo:
 
-\section{Formulación del problema de investigación}
+\begin{itemize}
+    \item \textbf{Predictivo}: se busca estimar un resultado futuro o no observado.
+    \item \textbf{Supervisado}: la variable objetivo (\texttt{AI\_Usage}) está disponible y es binaria.
+    \item \textbf{De clasificación}: el análisis requiere asignar una categoría (usa IA / no usa IA).
+\end{itemize}
 
-\vspace{1em}
-\noindent
-\textit{¿Qué patrones lingüísticos diferencian las letras de canciones en español que han sido premiadas por la RIAA de aquellas que no han sido premiadas durante el período 1990--2022, y cómo pueden ser identificados mediante un modelo de clasificación supervisado?}
-\vspace{1em}
+\subsection{Justificación del Enfoque de Modelamiento}
+La elección de un enfoque supervisado de clasificación se justifica por las siguientes razones:
+
+\begin{enumerate}
+    \item El dataset contiene una \textbf{variable objetivo claramente definida} relacionada con el
+    uso de herramientas de IA.
+    \item La naturaleza de la variable objetivo (binaria) permite la aplicación de modelos como
+    regresión logística y Random Forest.
+    \item Existe interés práctico en \textbf{predecir la probabilidad de adopción} como apoyo a
+    decisiones de formación, estrategias de talento y políticas internas en organizaciones
+    tecnológicas.
+    \item Las características de los desarrolladores (rol, país, industria, experiencia, educación)
+    pueden representar factores relevantes y medibles para la predicción.
+\end{enumerate}
+
+\subsection{Objetivo Analítico}
+\begin{quote}
+\textbf{Desarrollar y evaluar un modelo supervisado de clasificación capaz de predecir la
+probabilidad de uso de herramientas de IA por parte de desarrolladores, empleando métricas
+de desempeño como F1-score y validación cruzada estratificada.}
+\end{quote}
 
 \section{Delimitación}
-El estudio se centra en un corpus mundial de letras de canciones en español publicadas entre 1990 y 2022, diferenciando aquellas premiadas por la RIAA de las no premiadas.
+AAAA
 
 \section{Problemas específicos}
 
