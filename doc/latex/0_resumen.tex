@@ -3,9 +3,12 @@
   \textbf{Resumen Ejecutivo}
 \end{center}
 
-\noindent El presente informe desarrolla un modelo supervisado para predecir la adopción de herramientas de Inteligencia Artificial por desarrolladores profesionales, utilizando el dataset público \textit{Stack Overflow Annual Developer Survey 2025}. El estudio aplica técnicas de análisis exploratorio, modelamiento y validación utilizando regresión logística y Random Forest, evaluados mediante F1-score con validación cruzada k-fold.
+\noindent
 
-Los resultados muestran que la regresión logística sin balance alcanza el mejor equilibrio entre rendimiento, estabilidad e interpretabilidad (F1=0.8817). Se presentan además limitaciones, implicaciones prácticas y recomendaciones para organizaciones tecnológicas en procesos de adopción de IA.
+El presente proyecto desarrolla un modelo supervisado para predecir la adopción de herramientas de inteligencia artificial en la comunidad de desarrolladores, utilizando datos de la encuesta global \textit{Stack Overflow Developer Survey 2025}. El proceso siguió una metodología completa que incluyó limpieza de datos, análisis exploratorio, selección de técnica analítica, evaluación de modelos competidores y optimización de hiperparámetros.
 
-\bigskip
-\noindent\textit{Palabras clave:} clasificación supervisada, adopción de IA, regresión logística, random forest, validación cruzada, Stack Overflow Developer Survey.
+Los análisis iniciales mostraron que factores profesionales, tecnológicos y geográficos influyen de manera combinada en el uso de IA, aunque con correlaciones de baja magnitud. Con base en ello, se implementaron y compararon dos modelos principales: Regresión Logística y Random Forest, en versiones balanceadas y no balanceadas. El criterio de selección fue el \textit{F1-score}, dada la ligera desproporción entre clases.
+
+El modelo con mejor desempeño y mayor estabilidad fue la \textbf{Regresión Logística sin balance}, que obtuvo un F1 promedio de $0.8817$ con baja variabilidad. Tras aplicar técnicas de optimización (GridSearchCV y RandomizedSearchCV), se logró un F1 cercano a $0.883$, además de un aumento sustancial en el \textit{recall} de la clase positiva, reduciendo los falsos negativos de $105$ a $17$. Si bien la mejora no alcanzó el 5\% sugerido, la robustez y explicabilidad del modelo lo convierten en la mejor alternativa para cumplir los objetivos del estudio.
+
+Los resultados permiten identificar patrones de adopción de IA en desarrolladores globales y proveer información útil para estrategias de formación, talento y adopción tecnológica en organizaciones.

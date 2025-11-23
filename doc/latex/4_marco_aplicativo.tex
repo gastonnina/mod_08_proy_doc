@@ -18,7 +18,7 @@ El objetivo del modelamiento es predecir la probabilidad de que un desarrollador
     \item \textbf{Objetivo:} Predecir si un desarrollador adopta IA.
     \item \textbf{Variable objetivo:} \texttt{AI\_Usage} (0 = no usa IA, 1 = usa IA).
     \item \textbf{Naturaleza de los datos:} Mezcla de variables categóricas (DevType, Country, EdLevel, Industry, RemoteWork, OrgSize) y numéricas (WorkExp, NumLanguages).
-    \item \textbf{Métricas de evaluación:} Accuracy, Precision, Recall, F1-score y ROC-AUC.
+    \item \textbf{Métricas de evaluación:} Accuracy, Precision, Recall, F1-score \parencite{powers2020evaluation} y ROC-AUC.
 \end{itemize}
 
 
@@ -47,7 +47,7 @@ Se seleccionaron dos algoritmos complementarios para realizar el modelamiento:
 
 \subsection{Regresión Logística}
 
-La regresión logística estima la probabilidad de que un desarrollador use IA dada una combinación lineal de variables predictoras:
+La regresión logística estima la probabilidad \parencite{hosmer2013applied} de que un desarrollador use IA dada una combinación lineal de variables predictoras:
 
 \[
 P(Y = 1 \mid X) = \sigma(\beta_0 + \beta_1 x_1 + \dots + \beta_n x_n)
@@ -56,15 +56,14 @@ P(Y = 1 \mid X) = \sigma(\beta_0 + \beta_1 x_1 + \dots + \beta_n x_n)
 donde:
 
 \begin{itemize}
-    \item $\sigma(z) = \frac{1}{1 + e^{-z}}$ es la función sigmoide.
+    \item $\sigma(z) = \frac{1}{1 + e^{-z}}$ es la función sigmoide \parencite{hosmer2013applied}.
     \item $P(Y=1|X)$ es la probabilidad estimada de uso de IA.
 \end{itemize}
 
 
 \subsection{Random Forest}
 
-Random Forest consiste en un conjunto de árboles de decisión entrenados sobre subconjuntos 
-aleatorios de datos y variables:
+Random Forest consiste en un conjunto de árboles de decisión entrenados sobre subconjuntos aleatorios de datos y variables para reducir la varianza del modelo \parencite{breiman2001random}
 
 \[
 \hat{y} = \text{modo}\big(f_1(X), f_2(X), \dots, f_T(X)\big)
@@ -241,7 +240,7 @@ incluye:
   \item Un clasificador de \textbf{Regresión Logística} como etapa final del pipeline.
 \end{itemize}
 
-Sobre este pipeline se aplicó una búsqueda en malla (\texttt{GridSearchCV}) utilizando
+Sobre este pipeline se aplicó una búsqueda en malla (\texttt{GridSearchCV}) \parencite{bergstra2012random} utilizando
 validación cruzada estratificada (\(k=5\)) y \texttt{f1} como métrica principal. El espacio de
 búsqueda se definió de la siguiente manera:
 
