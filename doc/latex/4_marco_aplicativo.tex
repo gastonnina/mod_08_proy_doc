@@ -3,26 +3,212 @@
 \vspace*{0.35\textheight}
 \begin{center}
 	{\Huge\textbf{CAPÍTULO IV}} \\[0.5cm]
-	{\Huge\textbf{MARCO APLICATIVO}}
+    {\Huge\textbf{MODELAMIENTO Y EVALUACIÓN DE MODELOS}}
 \end{center}
 
 \newpage
-\chapter{MARCO APLICATIVO}
+\chapter{MODELAMIENTO Y EVALUACIÓN DE MODELOS}
 
-\section{Descripción del dataset}
-    \subsection{Características de las letras de canciones}
-    \subsection{Datos RIAA y premiación}
-\section{Preprocesamiento de datos}
-    \subsection{Limpieza textual}
-    \subsection{Tokenización, lematización y stopwords}
-    \subsection{Vectorización con TF-IDF}
-\section{Modelado supervisado}
-    \subsection{Modelos aplicados}
-    \subsubsection{Naive Bayes}
-    \subsubsection{Regresión logística}
-    \subsubsection{SVM, Random Forest, XGBoost}
-    \subsection{Métricas de evaluación}
-\section{Análisis de resultados}
-    \subsection{Comparación entre modelos}
-    \subsection{Análisis de errores}
-    \subsection{Discusión crítica}
+El objetivo del modelamiento es predecir la probabilidad de que un desarrollador utilice herramientas de inteligencia artificial (\texttt{AI\_Usage = 1}) a partir de variables demográficas, profesionales y tecnológicas. Para ello se emplean técnicas de clasificación supervisada  junto con un pipeline de preprocesamiento adecuado para datos mixtos (categóricos y numéricos).
+
+\section{Tipo de Problema}
+
+\begin{itemize}
+    \item \textbf{Tipo de análisis:} Clasificación supervisada.
+    \item \textbf{Objetivo:} Predecir si un desarrollador adopta IA.
+    \item \textbf{Variable objetivo:} \texttt{AI\_Usage} (0 = no usa IA, 1 = usa IA).
+    \item \textbf{Naturaleza de los datos:} Mezcla de variables categóricas (DevType, Country, EdLevel, Industry, RemoteWork, OrgSize) y numéricas (WorkExp, NumLanguages).
+    \item \textbf{Métricas de evaluación:} Accuracy, Precision, Recall, F1-score y ROC-AUC.
+\end{itemize}
+
+
+\section{Justificación de los Modelos}
+
+Se seleccionaron dos algoritmos complementarios para realizar el modelamiento:
+
+\subsection{Regresión Logística}
+\begin{itemize}
+    \item Modelo interpretable.
+    \item Sirve como \textit{baseline} sólido.
+    \item Rápido y estable.
+    \item Permite explicar factores de adopción de IA.
+\end{itemize}
+
+\subsection{Random Forest}
+\begin{itemize}
+    \item Captura relaciones no lineales.
+    \item Robusto frente a ruido y \textit{outliers}.
+    \item Mejor rendimiento en estructuras complejas.
+    \item Aporta una perspectiva complementaria al modelo lineal.
+\end{itemize}
+
+\section{Funciones Matemáticas de los Modelos}
+
+
+\subsection{Regresión Logística}
+
+La regresión logística estima la probabilidad de que un desarrollador use IA dada una combinación 
+lineal de variables predictoras:
+
+\[
+P(Y = 1 \mid X) = \sigma(\beta_0 + \beta_1 x_1 + \dots + \beta_n x_n)
+\]
+
+donde:
+
+\begin{itemize}
+    \item $\sigma(z) = \frac{1}{1 + e^{-z}}$ es la función sigmoide.
+    \item $P(Y=1|X)$ es la probabilidad estimada de uso de IA.
+\end{itemize}
+
+
+\subsection{Random Forest}
+
+Random Forest consiste en un conjunto de árboles de decisión entrenados sobre subconjuntos 
+aleatorios de datos y variables:
+
+\[
+\hat{y} = \text{modo}\big(f_1(X), f_2(X), \dots, f_T(X)\big)
+\]
+
+donde $f_t$ representa el árbol número $t$ del bosque.
+
+\section{Pipeline de Preprocesamiento}
+
+El pipeline incluyó:
+
+\begin{itemize}
+    \item Imputación de valores numéricos (\textit{mediana}).
+    \item Imputación de valores categóricos (categoría: ``No especificado'').
+    \item Estandarización de variables numéricas (\textit{StandardScaler}).
+    \item Codificación de variables categóricas (\textit{One-Hot Encoding}).
+\end{itemize}
+
+Este pipeline se integró directamente con los modelos mediante \texttt{ColumnTransformer} y \texttt{Pipeline} de \textit{scikit-learn}.
+
+\section{Hiperparámetros Utilizados}
+
+\subsection{Regresión Logística}
+\begin{itemize}
+    \item \textbf{solver:} liblinear
+    \item \textbf{penalty:} l2
+    \item \textbf{class\_weight:} None y ``balanced''
+\end{itemize}
+
+\subsection{Random Forest}
+\begin{itemize}
+    \item \textbf{n\_estimators:} 200
+    \item \textbf{max\_depth:} None
+    \item \textbf{class\_weight:} None y ``balanced''
+    \item \textbf{criterion:} gini
+\end{itemize}
+
+\section{Resultados de los Modelos}
+
+A continuación se muestran las métricas obtenidas para los modelos principales y sus variantes con y sin balanceo de clases.
+
+\begin{table}[H]
+\centering
+\caption{Resultados de modelos principales y competidores}
+\label{tab:resultados_modelos}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Modelo} & \textbf{Accuracy} & \textbf{Precision (1)} & \textbf{Recall (1)} & \textbf{F1-score (1)} \\
+\midrule
+Random Forest (sin balance) & 0.790262 & 0.794018 & 0.991572 & 0.881867 \\
+Logistic Regression (sin balance) & 0.790866 & 0.800125 & 0.979889 & 0.88093 \\
+Random Forest (balanceado) & 0.788749 & 0.794516 & 0.987933 & 0.880731 \\
+Logistic Regression (balanceado) & 0.674883 & 0.8456 & 0.719594 & 0.777525 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Los mejores resultados se obtienen con \textbf{Random Forest (sin balance)} y \textbf{Logistic Regression (sin balance)}, con F1-score ≈ 0.88.
+
+\section{Comparación Visual de Métricas}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth]{images/04_metricas_plotly.png}
+\caption{Comparación de métricas entre modelos.}
+\label{fig:metricas_modelos}
+\end{figure}
+
+La Figura \ref{fig:metricas_modelos} muestra una comparación directa entre los modelos evaluados considerando las métricas más relevantes para el problema: Accuracy, Precision, Recall, F1-score y ROC-AUC. En general, ambos modelos sin balancear (Regresión Logística y Random Forest) presentan un comportamiento muy similar y consistentemente superior a sus versiones balanceadas.
+
+En \textbf{Precision} y \textbf{Recall} se observa el patrón más marcado: Random Forest alcanza el mayor Recall (≈0.99), lo que indica que es el modelo que mejor identifica a los usuarios de IA (clase 1). Por su parte, la Regresión Logística obtiene una Precision ligeramente mayor, indicando menos falsos positivos.
+
+El \textbf{F1-score}, métrica clave debido al leve desbalance de clases, muestra valores muy similares entre ambos modelos (≈0.88), confirmando que ambos lograron un equilibrio sólido entre Precision y Recall. Finalmente, el \textbf{ROC-AUC} revela un rendimiento moderado entre  0.65 y 0.67, lo cual es consistente con problemas donde las relaciones predictoras son  débiles o dispersas.
+
+En conjunto, los resultados sugieren que ninguno de los dos modelos domina completamente: Random Forest destaca en Recall mientras que Regresión Logística muestra mejor estabilidad y menor variabilidad, lo que motiva su selección final como modelo ganador.
+
+
+\section{Matrices de Confusión}
+
+\subsection{Logistic Regression (sin balance)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth]{images/04_cm_logreg_sinbalance.png}
+\caption{Matriz de confusión - Regresión Logística (sin balance).}
+\end{figure}
+
+La matriz de confusión indica que la Regresión Logística identifica correctamente a la gran mayoría de los usuarios de IA (clase 1), pero presenta errores considerables al identificar casos de la clase 0. Esto sugiere una ligera inclinación del modelo hacia la clase mayoritaria, lo cual es  coherente con la distribución del dataset. Aun así, el desempeño global es consistente y estable.
+
+
+\subsection{Random Forest (sin balance)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth]{images/04_cm_rf_sinbalance.png}
+\caption{Matriz de confusión - Random Forest (sin balance).}
+\end{figure}
+
+Random Forest mejora la detección de la clase 0, reduciendo significativamente los falsos negativos comparado con la Regresión Logística. Mantiene también un desempeño muy alto  en la identificación de usuarios de IA (clase 1), posicionándose como un modelo robusto en  ambas clases. Su fortaleza principal es la captura de patrones no lineales.
+
+
+\section{Curvas ROC Comparadas}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth]{images/04_roc_comparadas.png}
+\caption{Curvas ROC comparadas entre modelos.}
+\label{fig:roc_curves}
+\end{figure}
+
+Las curvas ROC de ambos modelos muestran un comportamiento muy similar, con áreas bajo la curva (AUC) entre 0.65 y 0.67. Estos valores indican una capacidad de discriminación moderada, propia de problemas donde las señales predictoras son sutiles y no existe un único factor dominante. La cercanía entre modelos refuerza la conclusión de que ambos algoritmos capturan información comparable sobre la variable objetivo.
+
+
+\section{Validación Cruzada Estratificada (k=5)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth]{images/04_cv_results.png}
+\caption{Validación cruzada estratificada k=5.}
+\label{fig:cv_k5}
+\end{figure}
+
+La validación cruzada estratificada con k=5 revela que la Regresión Logística sin balance obtiene el mejor F1-score promedio (0.8817) y, crucialmente, la menor desviación estándar. Esta baja variabilidad indica que el modelo es estable y mantiene un rendimiento consistente a lo largo de distintos subconjuntos de datos. Random Forest obtiene un F1 cercano, pero con mayor variabilidad, lo que sugiere menor estabilidad.
+
+
+\section{Selección del Modelo Ganador Según Criterio Preciso}
+
+El Sprint exige seleccionar el modelo ganador usando un criterio cuantitativo.  
+Se utiliza F1-score debido al leve desbalance de clases.
+
+\begin{table}[H]
+\centering
+\caption{Comparación según criterio preciso (F1-score con CV k=5)}
+\label{tab:criterio_preciso}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Modelo} & \textbf{F1 (CV k=5)} & \textbf{Std} \\
+\midrule
+Logistic Regression (sin balance) & \textbf{0.8817} & 0.0015 \\
+Random Forest (sin balance) & 0.8752 & 0.0023 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+El modelo seleccionado como \textbf{ganador} es \textbf{Logistic Regression (sin balance)}, 
+al lograr el mejor F1 promedio y menor variabilidad.

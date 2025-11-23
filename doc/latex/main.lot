@@ -5,3 +5,6 @@
 \contentsline {table}{\numberline {2.2}{\ignorespaces Predictoras utilizadas y justificación conceptual}}{8}{table.caption.4}%
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {3.1}{\ignorespaces Metadatos del dataset limpio}}{19}{table.caption.12}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Resultados de modelos principales y competidores}}{25}{table.caption.13}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Comparación según criterio preciso (F1-score con CV k=5)}}{28}{table.caption.19}%
