@@ -1,17 +1,18 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Matriz de valores faltantes en las variables predictoras seleccionadas.}}{9}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Matriz de valores faltantes en las variables predictoras seleccionadas.\relax }}{9}{figure.caption.5}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Distribución de años de experiencia según uso de IA.}}{13}{figure.caption.6}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Distribución del número de lenguajes según uso de IA.}}{14}{figure.caption.7}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Mapa mundial de usuarios de IA.}}{15}{figure.caption.8}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Proporción de uso de IA por industria (Top 15).}}{16}{figure.caption.9}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Proporción de uso de IA según nivel educativo.}}{17}{figure.caption.10}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Matriz de correlación mixta (numéricas y categóricas).}}{18}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Distribución de años de experiencia según uso de IA.\relax }}{13}{figure.caption.6}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Distribución del número de lenguajes según uso de IA.\relax }}{14}{figure.caption.7}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Mapa mundial de usuarios de IA.\relax }}{15}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Proporción de uso de IA por industria (Top 15).\relax }}{16}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Proporción de uso de IA según nivel educativo.\relax }}{17}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Matriz de correlación mixta (numéricas y categóricas).\relax }}{18}{figure.caption.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Comparación de métricas entre modelos.}}{25}{figure.caption.14}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Matriz de confusión - Regresión Logística (sin balance).}}{26}{figure.caption.15}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Matriz de confusión - Random Forest (sin balance).}}{27}{figure.caption.16}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Curvas ROC comparadas entre modelos.}}{27}{figure.caption.17}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Validación cruzada estratificada k=5.}}{28}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Comparación de métricas entre modelos.\relax }}{25}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Matriz de confusión - Regresión Logística (sin balance).\relax }}{26}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Matriz de confusión - Random Forest (sin balance).\relax }}{27}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Curvas ROC comparadas entre modelos.\relax }}{27}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Validación cruzada estratificada k=5.\relax }}{28}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Matriz de confusión antes y después de la optimización de la Regresión Logística.\relax }}{31}{figure.caption.22}%

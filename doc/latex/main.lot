@@ -1,10 +1,12 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Variables seleccionadas del dataset Stack Overflow 2025}}{7}{table.caption.3}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Predictoras utilizadas y justificación conceptual}}{8}{table.caption.4}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Variables seleccionadas del dataset Stack Overflow 2025\relax }}{7}{table.caption.3}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Predictoras utilizadas y justificación conceptual\relax }}{8}{table.caption.4}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Metadatos del dataset limpio}}{19}{table.caption.12}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Metadatos del dataset limpio\relax }}{19}{table.caption.12}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Resultados de modelos principales y competidores}}{25}{table.caption.13}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Comparación según criterio preciso (F1-score con CV k=5)}}{28}{table.caption.19}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Resultados de modelos principales y competidores\relax }}{25}{table.caption.13}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Comparación según criterio preciso (F1-score con CV k=5)\relax }}{28}{table.caption.19}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Espacio de búsqueda para la Regresión Logística.\relax }}{29}{table.caption.20}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Comparación del desempeño antes y después de la optimización (conjunto de prueba).\relax }}{30}{table.caption.21}%
